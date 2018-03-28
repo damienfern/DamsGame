@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-class JCircle extends JPanel
+class JPion extends JPanel
 {
     protected Color couleur;
 
@@ -13,7 +13,7 @@ class JCircle extends JPanel
         g.fillOval(0,0, getHeight(),getWidth());
     }
 
-    public JCircle(Color couleur) {
+    public JPion(Color couleur) {
         this.couleur = couleur;
     }
 }

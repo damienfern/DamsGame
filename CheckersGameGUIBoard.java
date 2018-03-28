@@ -23,21 +23,22 @@ public class CheckersGameGUIBoard extends JPanel {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
 
-                JPanel panel = new JPanel();
+                SquareGUI panel = new SquareGUI();
                 if ((i+j) % 2 == 0)
                 {
-                    panel.setBackground(checkersGameGUIData.getColorBlackSquare());
+                    panel.setCouleur(checkersGameGUIData.getColorBlackSquare());
+                    panel.setBorder_couleur(checkersGameGUIData.getColorBlackSquareBorder());
 
                     if (i < 3 || i > length - 3)
                     {
-                        JCircle pion;
+                        JPion pion;
                         if(i > length - 3)
                         {
-                            pion = new JCircle(checkersGameGUIData.getColorBlackPiece());
+                            pion = new JPion(checkersGameGUIData.getColorBlackPiece());
                         }
                         else
                         {
-                            pion = new JCircle(checkersGameGUIData.getColorWhitePiece());
+                            pion = new JPion(checkersGameGUIData.getColorWhitePiece());
                         }
                         pion.setPreferredSize(new Dimension(50, 50));
                         pion.setOpaque(false);
@@ -45,10 +46,11 @@ public class CheckersGameGUIBoard extends JPanel {
                         panel.add(pion);
                     }
                 }
+
                 else
                 {
-
-                    panel.setBackground(checkersGameGUIData.getColorWhiteSquare());
+                    panel.setBorder_couleur(checkersGameGUIData.getColorWhiteSquareBorder());
+                    panel.setCouleur(checkersGameGUIData.getColorWhiteSquare());
                 }
 
                 panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
@@ -58,6 +60,7 @@ public class CheckersGameGUIBoard extends JPanel {
             }
 
         }
+        this.repaint();
     }
 
 
@@ -98,7 +101,7 @@ public class CheckersGameGUIBoard extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
-            if(mouseEvent.getSource() instanceof JPanel)
+            if(mouseEvent.getSource() instanceof JPanel && selectedPieceGUI != null)
             {
                 JPanel caseGUI = (JPanel) mouseEvent.getSource();
                 if (caseGUI.getComponents().length == 0 && caseGUI.getBackground() == checkersGameGUIData.getColorBlackSquare())
@@ -131,6 +134,7 @@ public class CheckersGameGUIBoard extends JPanel {
     {
         caseDest.add(selectedPieceGUI);
         this.repaint();
+        selectedPieceGUI = null;
     }
 
     private void setSelectedPieceGUI(JPanel pieceGUI) {

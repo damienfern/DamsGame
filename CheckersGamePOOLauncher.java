@@ -8,7 +8,7 @@ public class CheckersGamePOOLauncher {
 
     public static void main(String[] args)
     {
-        CheckersGameGUIData checkersGameGUIData = new CheckersGameGUIData(Color.BLUE, Color.LIGHT_GRAY, Color.BLACK, Color.WHITE, 10);
+        CheckersGameGUIData checkersGameGUIData = new CheckersGameGUIData(Color.RED, new Color(173,0,255), Color.BLACK, Color.WHITE, Color.RED,new Color(173,0,255),10);
 
         JFrame f = new CheckersGameGUI(checkersGameGUIData);
 
