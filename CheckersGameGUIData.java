@@ -15,6 +15,8 @@ public class CheckersGameGUIData {
         this.colorWhitePiece = colorWhitePiece;
         this.colorBlackSquare = colorBlackSquare;
         this.colorWhiteSquare = colorWhiteSquare;
+        this.colorWhiteSquareBorder = colorWhiteSquareBorder;
+        this.colorBlackSquareBorder = colorBlackSquareBorder;
         this.length = length;
     }
 
