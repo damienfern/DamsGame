@@ -5,14 +5,15 @@ public class SquareGUI extends JPanel {
     protected Color couleur;
     protected Color border_couleur;
 
-    public SquareGUI() {
+    public SquareGUI(Color couleur) {
+        this.couleur = couleur;
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.setColor(couleur);
+        this.setBackground(couleur);
     }
 
     public Color getCouleur() {

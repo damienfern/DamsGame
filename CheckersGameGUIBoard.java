@@ -23,10 +23,10 @@ public class CheckersGameGUIBoard extends JPanel {
         for (int i = 0; i < length; i++) {
             for (int j = 0; j < length; j++) {
 
-                SquareGUI panel = new SquareGUI();
+                SquareGUI panel;
                 if ((i+j) % 2 == 0)
                 {
-                    panel.setCouleur(checkersGameGUIData.getColorBlackSquare());
+                    panel = new SquareGUI(checkersGameGUIData.getColorBlackSquare());
                     panel.setBorder_couleur(checkersGameGUIData.getColorBlackSquareBorder());
 
                     if (i < 3 || i >= length - 3)
@@ -43,13 +43,13 @@ public class CheckersGameGUIBoard extends JPanel {
                         pion.setPreferredSize(new Dimension(50, 50));
                         pion.setOpaque(false);
                         pion.addMouseListener(new PionSelectMouseListener());
-                        panel.add   (pion);
+                        panel.add(pion);
                     }
                 }
 
                 else
                 {
-                    panel.setBorder_couleur(checkersGameGUIData.getColorWhiteSquareBorder());
+                    panel = new SquareGUI(checkersGameGUIData.getColorWhiteSquareBorder());
                     panel.setCouleur(checkersGameGUIData.getColorWhiteSquare());
                 }
 
