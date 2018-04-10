@@ -4,6 +4,7 @@ import java.awt.*;
 class PieceGUI extends JPanel
 {
     protected Color couleur;
+    private  PieceColor pieceColor;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -20,7 +21,12 @@ class PieceGUI extends JPanel
         g.fillOval(0,0, h, w);
     }
 
-    public PieceGUI(Color couleur) {
+    public PieceGUI(Color couleur, PieceColor piececolor) {
+        this.pieceColor = piececolor;
         this.couleur = couleur;
+    }
+
+    public PieceColor getPieceColor() {
+        return pieceColor;
     }
 }

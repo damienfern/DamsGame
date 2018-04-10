@@ -34,11 +34,11 @@ public class CheckersGameGUIBoard extends JPanel {
                         PieceGUI pion;
                         if(i >= length - 3)
                         {
-                            pion = new PieceGUI(checkersGameGUIData.getColorBlackPiece());
+                            pion = new PieceGUI(checkersGameGUIData.getColorBlackPiece(), PieceColor.NOIR);
                         }
                         else
                         {
-                            pion = new PieceGUI(checkersGameGUIData.getColorWhitePiece());
+                            pion = new PieceGUI(checkersGameGUIData.getColorWhitePiece(), PieceColor.BLANC);
                         }
                         pion.setPreferredSize(new Dimension(50, 50));
                         pion.setOpaque(false);
