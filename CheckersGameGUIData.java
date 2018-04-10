@@ -1,6 +1,7 @@
 import java.awt.*;
+import java.util.Observable;
 
-public class CheckersGameGUIData {
+public class CheckersGameGUIData extends Observable {
     private Color colorBlackPiece;
     private Color colorWhitePiece;
     private Color colorBlackSquare;
@@ -18,6 +19,7 @@ public class CheckersGameGUIData {
         this.colorWhiteSquareBorder = colorWhiteSquareBorder;
         this.colorBlackSquareBorder = colorBlackSquareBorder;
         this.length = length;
+
     }
 
     public Color getColorBlackPiece() {
@@ -26,6 +28,8 @@ public class CheckersGameGUIData {
 
     public void setColorBlackPiece(Color colorBlackPiece) {
         this.colorBlackPiece = colorBlackPiece;
+        setChanged();
+        notifyObservers(colorBlackPiece);
     }
 
     public Color getColorWhitePiece() {
@@ -34,6 +38,8 @@ public class CheckersGameGUIData {
 
     public void setColorWhitePiece(Color colorWhitePiece) {
         this.colorWhitePiece = colorWhitePiece;
+        setChanged();
+        notifyObservers(colorWhitePiece);
     }
 
     public Color getColorBlackSquare() {

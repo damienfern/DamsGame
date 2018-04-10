@@ -1,10 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
-class PieceGUI extends JPanel
+class PieceGUI extends JPanel implements Observer
 {
     protected Color couleur;
-    private  PieceColor pieceColor;
+
+    private PieceColor pieceColor;
+    private CheckersGameGUIData checkersGameGUIData;
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -21,12 +25,30 @@ class PieceGUI extends JPanel
         g.fillOval(0,0, h, w);
     }
 
-    public PieceGUI(Color couleur, PieceColor piececolor) {
+    public PieceGUI(CheckersGameGUIData checkersGameGUIData, PieceColor piececolor) {
         this.pieceColor = piececolor;
-        this.couleur = couleur;
+        this.checkersGameGUIData = checkersGameGUIData;
+        if(piececolor == piececolor.NOIR)
+        {
+            this.couleur = checkersGameGUIData.getColorBlackPiece();
+        }
+        else
+        {
+            this.couleur = checkersGameGUIData.getColorWhitePiece();
+        }
     }
 
-    public PieceColor getPieceColor() {
-        return pieceColor;
+
+    @Override
+    public void update(Observable observable, Object o) {
+        if (this.pieceColor == PieceColor.NOIR)
+        {
+            this.couleur = checkersGameGUIData.getColorBlackPiece();
+        }
+        else
+        {
+            this.couleur = checkersGameGUIData.getColorWhitePiece();
+        }
+        this.repaint();
     }
 }

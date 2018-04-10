@@ -21,7 +21,7 @@ public class CheckersGameGUIMenu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Color new_couleur = JColorChooser.showDialog(choix_couleur_pblanc, "Sélectionner une couleur pour les pièces blanches", checkersGameGUIData.getColorWhitePiece());
-                System.out.println(new_couleur.toString());
+                checkersGameGUIData.setColorWhitePiece(new_couleur);
             }
         });
 
@@ -29,6 +29,7 @@ public class CheckersGameGUIMenu extends JMenuBar {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 Color new_couleur = JColorChooser.showDialog(choix_couleur_pnoire, "Sélectionner une couleur pour les pièces noires", checkersGameGUIData.getColorBlackPiece());
+                checkersGameGUIData.setColorBlackPiece(new_couleur);
             }
         });
 
