@@ -29,10 +29,10 @@ public class CheckersGameGUIBoard extends JPanel {
                     panel.setCouleur(checkersGameGUIData.getColorBlackSquare());
                     panel.setBorder_couleur(checkersGameGUIData.getColorBlackSquareBorder());
 
-                    if (i < 3 || i > length - 3)
+                    if (i < 3 || i >= length - 3)
                     {
                         JPion pion;
-                        if(i > length - 3)
+                        if(i >= length - 3)
                         {
                             pion = new JPion(checkersGameGUIData.getColorBlackPiece());
                         }
