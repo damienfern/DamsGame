@@ -31,19 +31,19 @@ public class CheckersGameGUIBoard extends JPanel {
 
                     if (i < 3 || i >= length - 3)
                     {
-                        JPion pion;
+                        PieceGUI pion;
                         if(i >= length - 3)
                         {
-                            pion = new JPion(checkersGameGUIData.getColorBlackPiece());
+                            pion = new PieceGUI(checkersGameGUIData.getColorBlackPiece());
                         }
                         else
                         {
-                            pion = new JPion(checkersGameGUIData.getColorWhitePiece());
+                            pion = new PieceGUI(checkersGameGUIData.getColorWhitePiece());
                         }
                         pion.setPreferredSize(new Dimension(50, 50));
                         pion.setOpaque(false);
                         pion.addMouseListener(new PionSelectMouseListener());
-                        panel.add(pion);
+                        panel.add   (pion);
                     }
                 }
 
