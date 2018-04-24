@@ -1,9 +1,11 @@
+package model;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
-class PieceGUI extends JPanel implements Observer
+public class PieceGUI extends JPanel implements Observer
 {
     protected Color couleur;
 
@@ -39,6 +41,11 @@ class PieceGUI extends JPanel implements Observer
     }
 
 
+    /**
+     * Màj des couleurs des pieces
+     * @param observable
+     * @param o
+     */
     @Override
     public void update(Observable observable, Object o) {
         if (this.pieceColor == PieceColor.NOIR)
