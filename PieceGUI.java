@@ -28,7 +28,7 @@ class PieceGUI extends JPanel implements Observer
     public PieceGUI(CheckersGameGUIData checkersGameGUIData, PieceColor piececolor) {
         this.pieceColor = piececolor;
         this.checkersGameGUIData = checkersGameGUIData;
-        if(piececolor == piececolor.NOIR)
+        if(piececolor.NOIR.equals(piececolor))
         {
             this.couleur = checkersGameGUIData.getColorBlackPiece();
         }
