@@ -31,9 +31,4 @@ public class CheckersGameGUIBoard extends JPanel {
     public void setSelectedPieceGUI(JPanel pieceGUI) {
         this.selectedPieceGUI = pieceGUI;
     }
-
-    public void updatePionColor(){
-
-    }
-
 }

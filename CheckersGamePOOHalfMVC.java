@@ -25,6 +25,11 @@ public class CheckersGamePOOHalfMVC {
         f.setVisible(true);
     }
 
+    /**
+     * Création et définition de la fenetre
+     * @param f : fenetre
+     * @param name : nom de la fenetre
+     */
     private static void setFrameConfig(JFrame f, String name)
     {
         f.setTitle(name);

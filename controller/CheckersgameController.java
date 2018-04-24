@@ -23,6 +23,9 @@ public class CheckersgameController {
         setCheckboard();
     }
 
+    /**
+     * Création et définition du damier et pions
+     */
     private void setCheckboard()
     {
 
@@ -71,6 +74,10 @@ public class CheckersgameController {
         checkersGameGUIBoard.repaint();
     }
 
+    /**
+     * Déplacement d'un pion
+     * @param caseDest : case de destination
+     */
     public void movePiece(JPanel caseDest)
     {
         caseDest.add(checkersGameGUIBoard.getSelectedPieceGUI());
@@ -86,7 +93,9 @@ public class CheckersgameController {
         return checkersGameGUIData;
     }
 
-
+    /**
+     * classe listener associé à la case
+     */
     class PionMoveMouseListener implements MouseListener
     {
 
@@ -121,6 +130,9 @@ public class CheckersgameController {
         }
     }
 
+    /**
+     * classe listener associé au pion
+     */
     class PionSelectMouseListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {

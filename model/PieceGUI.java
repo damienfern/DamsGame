@@ -41,6 +41,11 @@ public class PieceGUI extends JPanel implements Observer
     }
 
 
+    /**
+     * Màj des couleurs des pieces
+     * @param observable
+     * @param o
+     */
     @Override
     public void update(Observable observable, Object o) {
         if (this.pieceColor == PieceColor.NOIR)
