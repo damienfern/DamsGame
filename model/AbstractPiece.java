@@ -17,10 +17,16 @@ abstract class AbstractPiece implements PieceModel{
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName()+"{" +
-                "coord=" + coord +
-                ", pieceColor=" + pieceColor +
-                '}';
+        String value;
+        if(PieceColor.BLANC.equals(this.pieceColor))
+        {
+            value = "--B--";
+        }
+        else
+        {
+            value = "--N--";
+        }
+        return value;
     }
 
     @Override
