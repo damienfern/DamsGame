@@ -2,10 +2,8 @@ package model;
 
 import vue.CheckersGameGUI;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.rmi.NoSuchObjectException;
+import java.util.*;
 
 public class CheckersGameModel {
 
@@ -16,8 +14,17 @@ public class CheckersGameModel {
     private PieceColor currentColor, unCurrentColor;
     private int length;                 // le nombre de lignes et colonnes du damier
 
-    public CheckersGameModel(Coord[] coords, Coord[] coords1, int i, PieceColor blanc) {
+    public CheckersGameModel(Coord[] blackPieceTab, Coord[] whitePieceTab, int length, PieceColor firstPlayer) {
+        this.currentColor = firstPlayer;
+        this.pieceList = new LinkedList<PieceModel>();
+        this.length = length;
+        for (Coord coord : blackPieceTab) {
+            pieceList.add(new Pawn(coord, PieceColor.NOIR));
+        }
 
+        for (Coord coord : whitePieceTab) {
+            pieceList.add(new Pawn(coord, PieceColor.BLANC));
+        }
     }
 
 
@@ -89,11 +96,10 @@ public class CheckersGameModel {
             myList.add(line);
         }
 
-        for (Iterator<PieceModel> i = pieceList.iterator(); i.hasNext();) {
-            PieceModel item = i.next();
-            ArrayList<String> a = myList.get(item.getY());
-            a.set(item.getX(), item.toString());
-            myList.set(item.getY(),a);
+        for (PieceModel piece : pieceList) {
+            ArrayList<String> a = myList.get(piece.getY());
+            a.set(piece.getX(), piece.toString());
+            myList.set(piece.getY(),a);
         }
         myList.add(0,header);
 
@@ -105,13 +111,20 @@ public class CheckersGameModel {
         return value;
     }
 
-    private PieceModel findPiece(Coord coord)
-    {
+    private PieceModel findPiece(Coord coord) throws NoSuchObjectException {
         for (PieceModel pieceModel : this.pieceList) {
             if (pieceModel.getCoord().equals(coord)) {
                 return pieceModel;
             }
         }
-        return null;
+        throw new NoSuchObjectException("Piece non trouvé");
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public List<PieceModel> getPieceList() {
+        return pieceList;
     }
 }

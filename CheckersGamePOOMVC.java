@@ -15,11 +15,11 @@ public class CheckersGamePOOMVC {
     public static void main(String[] args)
     {
         CheckersGameModel checkersGameModel = new CheckersGameModel(newBlackCoords(), newWhiteCoords(), 10, PieceColor.BLANC);
-
+        System.out.println(checkersGameModel);
         Color beerus = new Color(173,0,255); // VIOLET
         CheckersGameGUIData checkersGameGUIData = new CheckersGameGUIData(Color.RED, beerus, Color.BLACK, Color.WHITE, Color.RED, beerus,10);
 
-        CheckersgameController controler = new CheckersgameController(checkersGameGUIData);
+        CheckersgameController controler = new CheckersgameController(checkersGameGUIData, checkersGameModel);
 
         JFrame f = new CheckersGameGUI(controler);
 
@@ -32,17 +32,41 @@ public class CheckersGamePOOMVC {
 
     private static Coord[] newWhiteCoords() {
         return new Coord[]{
-                new Coord(0,7),new Coord(2,7),new Coord(4,7),new Coord(6,7),new Coord(8,7),
-                new Coord(1,8),new Coord(3,8),new Coord(5,8),new Coord(7,8),new Coord(9,8),
-                new Coord(0,9),new Coord(2,9),new Coord(4,9),new Coord(6,9),new Coord(8,9),
+                new Coord(0,7),
+                new Coord(2,7),
+                new Coord(4,7),
+                new Coord(6,7),
+                new Coord(8,7),
+                new Coord(1,8),
+                new Coord(3,8),
+                new Coord(5,8),
+                new Coord(7,8),
+                new Coord(9,8),
+                new Coord(0,9),
+                new Coord(2,9),
+                new Coord(4,9),
+                new Coord(6,9),
+                new Coord(8,9)
         };
     }
 
     private static Coord[] newBlackCoords() {
         return new Coord[]{
-                new Coord(1,0),new Coord(3,0),new Coord(5,0),new Coord(7,0),new Coord(9,0),
-                new Coord(0,1),new Coord(2,1),new Coord(4,1),new Coord(6,1),new Coord(8,1),
-                new Coord(1,2),new Coord(3,2),new Coord(5,2),new Coord(7,2),new Coord(9,2),
+                new Coord(1,0),
+                new Coord(3,0),
+                new Coord(5,0),
+                new Coord(7,0),
+                new Coord(9,0),
+                new Coord(0,1),
+                new Coord(2,1),
+                new Coord(4,1),
+                new Coord(6,1),
+                new Coord(8,1),
+                new Coord(1,2),
+                new Coord(3,2),
+                new Coord(5,2),
+                new Coord(7,2),
+                new Coord(9,2)
         };
     }
 

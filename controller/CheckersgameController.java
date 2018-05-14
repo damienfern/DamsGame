@@ -1,9 +1,6 @@
 package controller;
 
-import model.CheckersGameGUIData;
-import model.PieceColor;
-import model.PieceGUI;
-import model.SquareGUI;
+import model.*;
 import vue.CheckersGameGUIBoard;
 
 import javax.swing.*;
@@ -15,11 +12,12 @@ public class CheckersgameController {
 
     private CheckersGameGUIData checkersGameGUIData;
     private CheckersGameGUIBoard checkersGameGUIBoard;
+    private CheckersGameModel checkersGameModel;
 
-    public CheckersgameController(CheckersGameGUIData checkersGameGUIData) {
+    public CheckersgameController(CheckersGameGUIData checkersGameGUIData, CheckersGameModel checkersGameModel) {
         this.checkersGameGUIData = checkersGameGUIData;
         this.checkersGameGUIBoard = new CheckersGameGUIBoard(this.checkersGameGUIData);
-
+        this.checkersGameModel = checkersGameModel;
         setCheckboard();
     }
 
@@ -29,33 +27,14 @@ public class CheckersgameController {
     private void setCheckboard()
     {
 
-        checkersGameGUIBoard.setLayout(new GridLayout(checkersGameGUIBoard.getLength(), checkersGameGUIBoard.getLength()));
-        for (int i = 0; i < checkersGameGUIBoard.getLength(); i++) {
-            for (int j = 0; j < checkersGameGUIBoard.getLength(); j++) {
-
+        checkersGameGUIBoard.setLayout(new GridLayout(checkersGameModel.getLength(), checkersGameModel.getLength()));
+        for (int i = 0; i < checkersGameModel.getLength(); i++) {
+            for (int j = 0; j < checkersGameModel.getLength(); j++) {
                 SquareGUI panel;
                 if ((i+j) % 2 == 0)
                 {
                     panel = new SquareGUI(checkersGameGUIData.getColorBlackSquare());
                     panel.setBorder_couleur(checkersGameGUIData.getColorBlackSquareBorder());
-
-                    if (i < 3 || i >= checkersGameGUIBoard.getLength() - 3)
-                    {
-                        PieceGUI pion;
-                        if(i >= checkersGameGUIBoard.getLength() - 3)
-                        {
-                            pion = new PieceGUI(checkersGameGUIData, PieceColor.NOIR);
-                        }
-                        else
-                        {
-                            pion = new PieceGUI(checkersGameGUIData, PieceColor.BLANC);
-                        }
-                        pion.setPreferredSize(new Dimension(50, 50));
-                        pion.setOpaque(false);
-                        pion.addMouseListener(new PionSelectMouseListener());
-                        checkersGameGUIData.addObserver(pion);
-                        panel.add(pion);
-                    }
                 }
 
                 else
@@ -63,14 +42,23 @@ public class CheckersgameController {
                     panel = new SquareGUI(checkersGameGUIData.getColorWhiteSquareBorder());
                     panel.setCouleur(checkersGameGUIData.getColorWhiteSquare());
                 }
-
                 panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 panel.setAlignmentY(JComponent.CENTER_ALIGNMENT);
                 panel.addMouseListener(new PionMoveMouseListener());
                 checkersGameGUIBoard.add(panel);
             }
-
         }
+
+        for (PieceModel pieceModel: checkersGameModel.getPieceList()) {
+            PieceGUI pion = new PieceGUI(checkersGameGUIData, pieceModel.getPieceColor());
+//            SquareGUI square = checkersGameGUIBoard.;
+            pion.setPreferredSize(new Dimension(50, 50));
+            pion.setOpaque(false);
+            pion.addMouseListener(new PionSelectMouseListener());
+            checkersGameGUIData.addObserver(pion);
+            square.add(pion);
+        }
+
         checkersGameGUIBoard.repaint();
     }
 
