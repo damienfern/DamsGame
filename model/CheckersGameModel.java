@@ -20,6 +20,7 @@ public class CheckersGameModel {
 
     }
 
+
     public static void main(String[] args) {
         LinkedList<Pawn> list = new LinkedList<Pawn>();
         list.add(new Pawn(new Coord(1,0), PieceColor.NOIR));
@@ -102,15 +103,15 @@ public class CheckersGameModel {
         }
 
         return value;
+    }
 
-        /*return "CheckersGameModel{\n" +
-                "pieceList=" + pieceList +
-                ", pieceToMove=" + pieceToMove +
-                ", pieceToTake=" + pieceToTake +
-                ", lastRevoveCoord=" + lastRevoveCoord +
-                ", currentColor=" + currentColor +
-                ", unCurrentColor=" + unCurrentColor +
-                ", length=" + length +
-                '}';*/
+    private PieceModel findPiece(Coord coord)
+    {
+        for (PieceModel pieceModel : this.pieceList) {
+            if (pieceModel.getCoord().equals(coord)) {
+                return pieceModel;
+            }
+        }
+        return null;
     }
 }
