@@ -37,7 +37,6 @@ public class CheckersGameModel {
         list.add(new Pawn(new Coord(5,2), PieceColor.NOIR));
         list.add(new Pawn(new Coord(7,2), PieceColor.NOIR));
         list.add(new Pawn(new Coord(9,2), PieceColor.NOIR));
-
         list.add(new Pawn(new Coord(0,7), PieceColor.BLANC));
         list.add(new Pawn(new Coord(2,7), PieceColor.BLANC));
         list.add(new Pawn(new Coord(4,7), PieceColor.BLANC));
@@ -78,7 +77,7 @@ public class CheckersGameModel {
         ArrayList<ArrayList<String>> myList = new ArrayList<ArrayList<String>>();
         ArrayList<String> header = new ArrayList<String>();
         for (int i = 0; i < length; i++) {
-            header.add(Integer.toString(i));
+            header.add("--"+Integer.toString(i)+"--");
         }
 
         for (int i = 0; i < length; i++) {
@@ -97,7 +96,7 @@ public class CheckersGameModel {
         }
         myList.add(0,header);
 
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i <= length; i++) {
 
             value += myList.get(i).toString()+"\n";
         }
