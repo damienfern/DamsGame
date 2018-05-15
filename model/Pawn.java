@@ -8,16 +8,59 @@ public class Pawn extends AbstractPiece{
     }
 
     public static void main(String[] args) {
-        Pawn p1 = new Pawn(new Coord(5,7),PieceColor.NOIR);
-        System.out.println(p1);
-        Queen q1 = new Queen(new Coord(5,7), PieceColor.NOIR);
-        System.out.println(q1);
+        Pawn p1 = new Pawn(new Coord(3,3),PieceColor.BLANC);
+
+        System.out.println("=================================");
+        System.out.println("BLANC");
+        System.out.println("=================================");
+        // TEST BLANC
+        System.out.println(new Coord(2, 2).toString() + " " + p1.isMoveOk(new Coord(2, 2)));
+        System.out.println(new Coord(2, 4).toString() + " " + p1.isMoveOk(new Coord(2, 4)));
+        System.out.println(new Coord(4, 2).toString() + " " + p1.isMoveOk(new Coord(4, 2)));
+        System.out.println(new Coord(4, 4).toString() + " " + p1.isMoveOk(new Coord(4, 4)));
+        System.out.println(new Coord(3, 2).toString() + " " + p1.isMoveOk(new Coord(3, 2)));
+        System.out.println(new Coord(2, 3).toString() + " " + p1.isMoveOk(new Coord(2, 3)));
+        System.out.println(new Coord(4, 3).toString() + " " + p1.isMoveOk(new Coord(4, 3)));
+        System.out.println(new Coord(3, 4).toString() + " " + p1.isMoveOk(new Coord(3, 4)));
+
+        Pawn p2 = new Pawn(new Coord(3,3),PieceColor.NOIR);
+        System.out.println("=================================");
+        System.out.println("NOIR");
+        System.out.println("=================================");
+
+        // TEST NOIR
+        System.out.println(new Coord(2, 2) + " " + p2.isMoveOk(new Coord(2, 2)));
+        System.out.println(new Coord(2, 4) + " " + p2.isMoveOk(new Coord(2, 4)));
+        System.out.println(new Coord(4, 2) + " " + p2.isMoveOk(new Coord(4, 2)));
+        System.out.println(new Coord(4, 4) + " " + p2.isMoveOk(new Coord(4, 4)));
+        System.out.println(new Coord(3, 2) + " " + p2.isMoveOk(new Coord(3, 2)));
+        System.out.println(new Coord(2, 3) + " " + p2.isMoveOk(new Coord(2, 3)));
+        System.out.println(new Coord(4, 3) + " " + p2.isMoveOk(new Coord(4, 3)));
+        System.out.println(new Coord(3, 4) + " " + p2.isMoveOk(new Coord(3, 4)));
     }
 
 
     @Override
     public boolean isMoveOk(Coord targetCoord) {
-        return false;
+        int forward;
+        if(getPieceColor().equals(PieceColor.BLANC))
+        {
+            forward = 1;
+        }
+        else
+        {
+            forward = -1;
+        }
+
+        if(getY() == targetCoord.getY() + forward
+                && ( targetCoord.getX() == getX() + 1 || targetCoord.getX() == getX() - 1 ))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     @Override

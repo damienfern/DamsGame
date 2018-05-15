@@ -23,17 +23,6 @@ public class CheckersgameController {
     }
 
 
-    /**
-     * Déplacement d'un pion
-     * @param caseDest : case de destination
-     */
-    public void movePiece(JPanel caseDest)
-    {
-        caseDest.add(checkersGameGUIBoard.getSelectedPieceGUI());
-        checkersGameGUIBoard.repaint();
-        checkersGameGUIBoard.setSelectedPieceGUI(null);
-    }
-
     public CheckersGameGUIBoard getCheckersGameGUIBoard() {
         return checkersGameGUIBoard;
     }
