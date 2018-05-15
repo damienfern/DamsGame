@@ -7,3 +7,4 @@ Les versions finales sont ici :
 * [Exo 4](https://github.com/damienfern/DamsGame/releases/tag/4.0)
 * [Exo 5](https://github.com/damienfern/DamsGame/releases/tag/5.0)
 * [Exo 5.1](https://github.com/damienfern/DamsGame/releases/tag/5.1) : Exo 5 + Changement de joueur automatique
+* [Exo 5.2](https://github.com/damienfern/DamsGame/releases/tag/5.2) : Exo 5.1 + review des profs
