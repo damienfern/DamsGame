@@ -2,6 +2,7 @@ package model;
 
 import vue.CheckersGameGUI;
 
+import javax.swing.*;
 import java.rmi.NoSuchObjectException;
 import java.util.*;
 
@@ -28,7 +29,7 @@ public class CheckersGameModel {
     }
 
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         LinkedList<Pawn> list = new LinkedList<Pawn>();
         list.add(new Pawn(new Coord(1,0), PieceColor.NOIR));
         list.add(new Pawn(new Coord(3,0), PieceColor.NOIR));
@@ -64,7 +65,7 @@ public class CheckersGameModel {
         Pawn pieceMoved = new Pawn(new Coord(0,8), PieceColor.NOIR);
         Pawn pieceTook = new Pawn(new Coord(0,9), PieceColor.NOIR);
         CheckersGameModel m1 = new CheckersGameModel((LinkedList) list, pieceMoved, pieceTook, new Coord(0,5), PieceColor.NOIR, PieceColor.BLANC, 10);
-    }
+    }*/
 
 
     public CheckersGameModel(List<PieceModel> pieceList, PieceModel pieceToMove, PieceModel pieceToTake, Coord lastRevoveCoord, PieceColor currentColor, PieceColor unCurrentColor, int length) {
@@ -111,13 +112,13 @@ public class CheckersGameModel {
         return value;
     }
 
-    private PieceModel findPiece(Coord coord) throws NoSuchObjectException {
+    private PieceModel findPiece(Coord coord){
         for (PieceModel pieceModel : this.pieceList) {
             if (pieceModel.getCoord().equals(coord)) {
                 return pieceModel;
             }
         }
-        throw new NoSuchObjectException("Piece non trouvé");
+        return null;
     }
 
     public int getLength() {
@@ -126,5 +127,19 @@ public class CheckersGameModel {
 
     public List<PieceModel> getPieceList() {
         return pieceList;
+    }
+
+    public boolean isCurrentPlayer(Coord pieceCoord)
+    {
+        PieceModel pieceToCheck = findPiece(pieceCoord);
+        if(currentColor.equals(pieceToCheck.getPieceColor()))
+        {
+            pieceToTake = pieceToCheck;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

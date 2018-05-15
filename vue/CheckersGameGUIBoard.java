@@ -49,7 +49,7 @@ public class CheckersGameGUIBoard extends JPanel {
                 }
                 panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 panel.setAlignmentY(JComponent.CENTER_ALIGNMENT);
-                panel.addMouseListener(new PionMoveMouseListener());
+                panel.addMouseListener(new SquareListener());
                 this.damier.put(new Coord(colonne, ligne), panel);
                 this.add(panel);
             }
@@ -58,9 +58,10 @@ public class CheckersGameGUIBoard extends JPanel {
        for (PieceModel pieceModel: checkersGameModel.getPieceList()) {
             PieceGUI pion = new PieceGUI(checkersGameGUIData, pieceModel.getPieceColor());
             SquareGUI square = damier.get(pieceModel.getCoord());
+            pion.setCoord(pieceModel.getCoord());
             pion.setPreferredSize(new Dimension(50, 50));
             pion.setOpaque(false);
-            pion.addMouseListener(new PionSelectMouseListener());
+            pion.addMouseListener(new PieceListener());
             checkersGameGUIData.addObserver(pion);
             square.add(pion);
         }
@@ -83,7 +84,7 @@ public class CheckersGameGUIBoard extends JPanel {
     /**
      * classe listener associé à la case
      */
-    class PionMoveMouseListener implements MouseListener
+    class SquareListener implements MouseListener
     {
 
         @Override
@@ -122,13 +123,16 @@ public class CheckersGameGUIBoard extends JPanel {
     /**
      * classe listener associé au pion
      */
-    class PionSelectMouseListener implements MouseListener {
+    class PieceListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
             if (mouseEvent.getSource() instanceof JPanel) {
-                JPanel pieceGUI = (JPanel) mouseEvent.getSource();
-                setSelectedPieceGUI(pieceGUI);
                 System.out.println("PIONSELECT");
+                PieceGUI pieceGUI = (PieceGUI) mouseEvent.getSource();
+                if(checkersGameModel.isCurrentPlayer(pieceGUI.getCoord()))
+                {
+                    setSelectedPieceGUI(pieceGUI);
+                }
             }
         }
 
