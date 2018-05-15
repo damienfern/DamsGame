@@ -143,14 +143,19 @@ public class CheckersGameModel {
         }
     }
 
-//    /**
-//     * Déplacement d'un pion
-//     * @param caseDest : case de destination
-//     */
-//    public void movePiece(JPanel caseDest)
-//    {
-//        caseDest.add(checkersGameGUIBoard.getSelectedPieceGUI());
-//        checkersGameGUIBoard.repaint();
-//        checkersGameGUIBoard.setSelectedPieceGUI(null);
-//    }
+    /**
+     * Déplacement d'un pion
+     * @param targetCoord : case de destination
+     */
+    public ActionType movePiece(Coord targetCoord)
+    {
+      if (pieceToTake.isMoveOk(targetCoord))
+      {
+          return ActionType.SIMPLEMOVE;
+      }
+      else
+      {
+          return ActionType.NOMOVE;
+      }
+    }
 }
