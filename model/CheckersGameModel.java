@@ -37,58 +37,6 @@ public class CheckersGameModel {
         }
     }
 
-
-/*    public static void main(String[] args) {
-        LinkedList<Pawn> list = new LinkedList<Pawn>();
-        list.add(new Pawn(new Coord(1,0), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(3,0), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(5,0), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(7,0), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(9,0), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(0,1), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(2,1), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(4,1), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(6,1), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(8,1), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(1,2), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(3,2), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(5,2), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(7,2), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(9,2), PieceColor.NOIR));
-        list.add(new Pawn(new Coord(0,7), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(2,7), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(4,7), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(6,7), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(8,7), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(1,8), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(3,8), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(5,8), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(7,8), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(9,8), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(0,9), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(2,9), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(4,9), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(6,9), PieceColor.BLANC));
-        list.add(new Pawn(new Coord(8,9), PieceColor.BLANC));
-
-        Pawn pieceMoved = new Pawn(new Coord(0,8), PieceColor.NOIR);
-        Pawn pieceTook = new Pawn(new Coord(0,9), PieceColor.NOIR);
-        CheckersGameModel m1 = new CheckersGameModel((LinkedList) list, pieceMoved, pieceTook, new Coord(0,5), PieceColor.NOIR, PieceColor.BLANC, 10);
-    }*/
-
-
-    public CheckersGameModel(List<PieceModel> pieceList, PieceModel pieceToMove, PieceModel pieceToTake, Coord lastRevoveCoord, PieceColor currentColor, PieceColor unCurrentColor, int length) {
-        this.pieceList = pieceList;
-        this.pieceToMove = pieceToMove;
-        this.pieceToTake = pieceToTake;
-        this.lastRevoveCoord = lastRevoveCoord;
-        this.currentColor = currentColor;
-        this.unCurrentColor = unCurrentColor;
-        this.length = length;
-
-        System.out.println(this);
-    }
-
     @Override
     public String toString() {
         String value = "";
@@ -128,10 +76,6 @@ public class CheckersGameModel {
             }
         }
         return null;
-    }
-
-    public int getLength() {
-        return length;
     }
 
     public List<PieceModel> getPieceList() {

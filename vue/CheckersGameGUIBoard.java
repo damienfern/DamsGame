@@ -16,14 +16,16 @@ public class CheckersGameGUIBoard extends JPanel {
     private JPanel selectedPieceGUI;       // Piece à déplacer
     private Map<Coord, SquareGUI> damier;
     private CheckersGameModel checkersGameModel;
+    private CheckersgameController checkersgameController;
 
-    public CheckersGameGUIBoard(CheckersGameGUIData checkersGameGUIData, CheckersGameModel checkersGameModel) {
+    public CheckersGameGUIBoard(CheckersGameGUIData checkersGameGUIData, CheckersGameModel checkersGameModel, CheckersgameController checkersgameController) {
         super();
         this.checkersGameGUIData = checkersGameGUIData;
         this.length = checkersGameGUIData.getLength();
         this.selectedPieceGUI = null;
         this.damier = new HashMap<Coord, SquareGUI>();
         this.checkersGameModel = checkersGameModel;
+        this.checkersgameController = checkersgameController;
         setCheckboard();
     }
 
@@ -49,7 +51,7 @@ public class CheckersGameGUIBoard extends JPanel {
                 }
                 panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 panel.setAlignmentY(JComponent.CENTER_ALIGNMENT);
-                panel.addMouseListener(new SquareListener());
+                panel.addMouseListener(checkersgameController.new SquareListener());
                 this.damier.put(new Coord(colonne, ligne), panel);
                 this.add(panel);
             }
@@ -61,16 +63,12 @@ public class CheckersGameGUIBoard extends JPanel {
             pion.setCoord(pieceModel.getCoord());
             pion.setPreferredSize(new Dimension(50, 50));
             pion.setOpaque(false);
-            pion.addMouseListener(new PieceListener());
+            pion.addMouseListener(checkersgameController.new PieceListener());
             checkersGameGUIData.addObserver(pion);
             square.add(pion);
         }
 
         this.repaint();
-    }
-
-    public int getLength() {
-        return length;
     }
 
     public JPanel getSelectedPieceGUI() {
@@ -81,86 +79,5 @@ public class CheckersGameGUIBoard extends JPanel {
         this.selectedPieceGUI = pieceGUI;
     }
 
-    /**
-     * classe listener associé à la case
-     */
-    class SquareListener implements MouseListener
-    {
 
-        @Override
-        public void mouseClicked(MouseEvent mouseEvent) {
-            if(mouseEvent.getSource() instanceof SquareGUI && getSelectedPieceGUI() != null)
-            {
-                SquareGUI caseGUI = (SquareGUI) mouseEvent.getSource();
-                Coord caseCoord = caseGUI.getCoord();
-                System.out.println(caseCoord);
-                if(checkersGameModel.movePiece(caseCoord).equals(ActionType.SIMPLEMOVE))
-                {
-                    PieceGUI piece = (PieceGUI) getSelectedPieceGUI();
-                    piece.setCoord(caseCoord);
-                    caseGUI.add(getSelectedPieceGUI());
-                    setSelectedPieceGUI(null);
-                    repaint();
-                    System.out.println(checkersGameModel);
-                }
-            }
-        }
-
-        @Override
-        public void mousePressed(MouseEvent mouseEvent) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent mouseEvent) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent mouseEvent) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent mouseEvent) {
-
-        }
-    }
-
-    /**
-     * classe listener associé au pion
-     */
-    class PieceListener implements MouseListener {
-        @Override
-        public void mouseClicked(MouseEvent mouseEvent) {
-            if (mouseEvent.getSource() instanceof JPanel) {
-                System.out.println("PIONSELECT");
-                PieceGUI pieceGUI = (PieceGUI) mouseEvent.getSource();
-                if(checkersGameModel.isCurrentPlayer(pieceGUI.getCoord()))
-                {
-                    setSelectedPieceGUI(pieceGUI);
-                }
-            }
-        }
-
-        @Override
-        public void mousePressed(MouseEvent mouseEvent) {
-
-        }
-
-        @Override
-        public void mouseReleased(MouseEvent mouseEvent) {
-
-        }
-
-        @Override
-        public void mouseEntered(MouseEvent mouseEvent) {
-
-        }
-
-        @Override
-        public void mouseExited(MouseEvent mouseEvent) {
-
-        }
-    }
 }
