@@ -101,6 +101,7 @@ public class CheckersGameGUIBoard extends JPanel {
                     caseGUI.add(getSelectedPieceGUI());
                     setSelectedPieceGUI(null);
                     repaint();
+                    System.out.println(checkersGameModel);
                 }
             }
         }
