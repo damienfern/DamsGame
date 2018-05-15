@@ -8,7 +8,7 @@ import java.util.Observer;
 public class PieceGUI extends JPanel implements Observer
 {
     protected Color couleur;
-
+    private Coord coord;
     private PieceColor pieceColor;
     private CheckersGameGUIData checkersGameGUIData;
 
@@ -57,5 +57,13 @@ public class PieceGUI extends JPanel implements Observer
             this.couleur = checkersGameGUIData.getColorWhitePiece();
         }
         this.repaint();
+    }
+
+    public Coord getCoord() {
+        return coord;
+    }
+
+    public void setCoord(Coord coord) {
+        this.coord = coord;
     }
 }

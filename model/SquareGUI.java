@@ -4,10 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class SquareGUI extends JPanel {
+    private Coord coord;
     protected Color couleur;
     protected Color border_couleur;
 
-    public SquareGUI(Color couleur) {
+    public SquareGUI(Color couleur, Coord coord) {
+        this.coord = coord;
         this.couleur = couleur;
     }
 
@@ -34,5 +36,9 @@ public class SquareGUI extends JPanel {
     public void setBorder_couleur(Color border_couleur) {
         this.border_couleur = border_couleur;
         this.setBorder(BorderFactory.createLineBorder(border_couleur));
+    }
+
+    public Coord getCoord() {
+        return coord;
     }
 }
