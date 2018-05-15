@@ -134,7 +134,7 @@ public class CheckersGameModel {
         PieceModel pieceToCheck = findPiece(pieceCoord);
         if(currentColor.equals(pieceToCheck.getPieceColor()))
         {
-            pieceToTake = pieceToCheck;
+            pieceToMove = pieceToCheck;
             return true;
         }
         else
@@ -149,8 +149,10 @@ public class CheckersGameModel {
      */
     public ActionType movePiece(Coord targetCoord)
     {
-      if (pieceToTake.isMoveOk(targetCoord))
+      if (pieceToMove.isMoveOk(targetCoord))
       {
+          pieceToMove.setCoord(targetCoord);
+          pieceToMove = null;
           return ActionType.SIMPLEMOVE;
       }
       else

@@ -38,14 +38,14 @@ public class CheckersGameGUIBoard extends JPanel {
                 SquareGUI panel;
                 if ((ligne+colonne) % 2 == 0)
                 {
-                    panel = new SquareGUI(checkersGameGUIData.getColorBlackSquare());
-                    panel.setBorder_couleur(checkersGameGUIData.getColorBlackSquareBorder());
+                    panel = new SquareGUI(checkersGameGUIData.getColorWhiteSquare(), new Coord(colonne, ligne));
+                    panel.setBorder_couleur(checkersGameGUIData.getColorWhiteSquareBorder());
                 }
 
                 else
                 {
-                    panel = new SquareGUI(checkersGameGUIData.getColorWhiteSquareBorder());
-                    panel.setCouleur(checkersGameGUIData.getColorWhiteSquare());
+                    panel = new SquareGUI(checkersGameGUIData.getColorBlackSquareBorder(), new Coord(colonne, ligne));
+                    panel.setCouleur(checkersGameGUIData.getColorBlackSquare());
                 }
                 panel.setAlignmentX(JComponent.CENTER_ALIGNMENT);
                 panel.setAlignmentY(JComponent.CENTER_ALIGNMENT);
@@ -89,12 +89,16 @@ public class CheckersGameGUIBoard extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
-            if(mouseEvent.getSource() instanceof JPanel && getSelectedPieceGUI() != null)
+            if(mouseEvent.getSource() instanceof SquareGUI && getSelectedPieceGUI() != null)
             {
-                JPanel caseGUI = (JPanel) mouseEvent.getSource();
-                if (caseGUI.getComponents().length == 0 && caseGUI.getBackground() == checkersGameGUIData.getColorBlackSquare())
+                SquareGUI caseGUI = (SquareGUI) mouseEvent.getSource();
+                Coord caseCoord = caseGUI.getCoord();
+                System.out.println(caseCoord);
+                if(checkersGameModel.movePiece(caseCoord).equals(ActionType.SIMPLEMOVE))
                 {
-                    System.out.println("PionMove");
+                    caseGUI.add(getSelectedPieceGUI());
+                    setSelectedPieceGUI(null);
+                    repaint();
                 }
             }
         }

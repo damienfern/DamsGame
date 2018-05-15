@@ -45,15 +45,17 @@ public class Pawn extends AbstractPiece{
         int forward;
         if(getPieceColor().equals(PieceColor.BLANC))
         {
-            forward = 1;
+            forward = -1;
         }
         else
         {
-            forward = -1;
+            forward = 1;
         }
+        boolean CondY = getY() + forward == targetCoord.getY();
+        boolean CondX = ( targetCoord.getX() == getX() + 1 || targetCoord.getX() == getX() - 1);
+        boolean Cond = CondY && CondX;
 
-        if(getY() == targetCoord.getY() + forward
-                && ( targetCoord.getX() == getX() + 1 || targetCoord.getX() == getX() - 1 ))
+        if(Cond)
         {
             return true;
         }
