@@ -26,6 +26,15 @@ public class CheckersGameModel {
         for (Coord coord : whitePieceTab) {
             pieceList.add(new Pawn(coord, PieceColor.BLANC));
         }
+
+        if(firstPlayer.equals(PieceColor.NOIR))
+        {
+            unCurrentColor = PieceColor.BLANC;
+        }
+        else
+        {
+            unCurrentColor = PieceColor.NOIR;
+        }
     }
 
 
@@ -149,12 +158,15 @@ public class CheckersGameModel {
      */
     public ActionType movePiece(Coord targetCoord)
     {
-      if (pieceToMove.isMoveOk(targetCoord))
+      if (pieceToMove.isMoveOk(targetCoord) && isCurrentPlayer(pieceToMove.getCoord()))
       {
           pieceToMove.setCoord(targetCoord);
           int indexPieceMoved = pieceList.indexOf(pieceToMove);
           pieceList.set(indexPieceMoved, pieceToMove);
           pieceToMove = null;
+          PieceColor save = unCurrentColor;
+          unCurrentColor = currentColor;
+          currentColor = save;
           return ActionType.SIMPLEMOVE;
       }
       else
