@@ -83,7 +83,7 @@ public class CheckersgameController {
     public class PieceListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
-            if (mouseEvent.getSource() instanceof JPanel) {
+            if (mouseEvent.getSource() instanceof PieceGUI) {
                 System.out.println("PIONSELECT");
                 PieceGUI pieceGUI = (PieceGUI) mouseEvent.getSource();
                 if(checkersGameModel.isCurrentPlayer(pieceGUI.getCoord()))

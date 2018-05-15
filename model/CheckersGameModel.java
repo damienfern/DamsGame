@@ -84,7 +84,13 @@ public class CheckersGameModel {
 
     public boolean isCurrentPlayer(Coord pieceCoord)
     {
+        if (pieceCoord == null) {
+            throw new IllegalArgumentException("Coord can't be null");
+        }
         PieceModel pieceToCheck = findPiece(pieceCoord);
+        if (pieceToCheck == null) {
+            throw new IllegalStateException("Pas de pièce aux coordonnees : "+ pieceCoord);
+        }
         if(currentColor.equals(pieceToCheck.getPieceColor()))
         {
             pieceToMove = pieceToCheck;
@@ -105,17 +111,20 @@ public class CheckersGameModel {
       if (pieceToMove.isMoveOk(targetCoord) && isCurrentPlayer(pieceToMove.getCoord()))
       {
           pieceToMove.setCoord(targetCoord);
-          int indexPieceMoved = pieceList.indexOf(pieceToMove);
-          pieceList.set(indexPieceMoved, pieceToMove);
           pieceToMove = null;
-          PieceColor save = unCurrentColor;
-          unCurrentColor = currentColor;
-          currentColor = save;
+          switchCurrentColor();
           return ActionType.SIMPLEMOVE;
       }
       else
       {
           return ActionType.NOMOVE;
       }
+    }
+
+    public void switchCurrentColor()
+    {
+        PieceColor save = unCurrentColor;
+        unCurrentColor = currentColor;
+        currentColor = save;
     }
 }
