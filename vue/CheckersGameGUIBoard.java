@@ -96,6 +96,8 @@ public class CheckersGameGUIBoard extends JPanel {
                 System.out.println(caseCoord);
                 if(checkersGameModel.movePiece(caseCoord).equals(ActionType.SIMPLEMOVE))
                 {
+                    PieceGUI piece = (PieceGUI) getSelectedPieceGUI();
+                    piece.setCoord(caseCoord);
                     caseGUI.add(getSelectedPieceGUI());
                     setSelectedPieceGUI(null);
                     repaint();

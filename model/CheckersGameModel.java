@@ -152,6 +152,8 @@ public class CheckersGameModel {
       if (pieceToMove.isMoveOk(targetCoord))
       {
           pieceToMove.setCoord(targetCoord);
+          int indexPieceMoved = pieceList.indexOf(pieceToMove);
+          pieceList.set(indexPieceMoved, pieceToMove);
           pieceToMove = null;
           return ActionType.SIMPLEMOVE;
       }
