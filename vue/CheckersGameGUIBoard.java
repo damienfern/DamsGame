@@ -80,11 +80,6 @@ public class CheckersGameGUIBoard extends JPanel {
         this.selectedPieceGUI = pieceGUI;
     }
 
-    public JPanel getCheckersGUIBoard()
-    {
-        return this;
-    }
-
     /**
      * classe listener associé à la case
      */
@@ -98,7 +93,7 @@ public class CheckersGameGUIBoard extends JPanel {
                 JPanel caseGUI = (JPanel) mouseEvent.getSource();
                 if (caseGUI.getComponents().length == 0 && caseGUI.getBackground() == checkersGameGUIData.getColorBlackSquare())
                 {
-                    System.out.println("OK");
+                    System.out.println("PionMove");
                 }
             }
         }
@@ -133,6 +128,7 @@ public class CheckersGameGUIBoard extends JPanel {
             if (mouseEvent.getSource() instanceof JPanel) {
                 JPanel pieceGUI = (JPanel) mouseEvent.getSource();
                 setSelectedPieceGUI(pieceGUI);
+                System.out.println("PIONSELECT");
             }
         }
 
