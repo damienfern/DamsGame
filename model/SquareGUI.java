@@ -3,6 +3,9 @@ package model;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe graphique d'une case
+ */
 public class SquareGUI extends JPanel {
     private Coord coord;
     protected Color couleur;

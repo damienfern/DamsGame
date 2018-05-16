@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Classe de Coordonéne
+ */
 public class Coord {
     private int x;
     private int y;
@@ -44,6 +47,11 @@ public class Coord {
         return "{ x : " + this.x + ", y : " + this.y + " }";
     }
 
+    /**
+     * Fonction qui check si 2 objets Coord sont égaux
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,6 +61,10 @@ public class Coord {
                 y == coord.y;
     }
 
+    /**
+     * A copier coller comme tel
+     * @return
+     */
     @Override
     public int hashCode() {
         final int prime = 31;

@@ -5,6 +5,9 @@ import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Classe graphique d'un pion
+ */
 public class PieceGUI extends JPanel implements Observer
 {
     protected Color couleur;

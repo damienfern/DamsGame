@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Classe model pour les reines (Non utilisé ATM)
+ */
 public class Queen extends AbstractPiece {
 
     public Queen(Coord coord, PieceColor pieceColor) {

@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Classe abstraite qui est mère de Pawn et Queen et implémente pieceModel
+ */
 abstract class AbstractPiece implements PieceModel{
     private Coord coord;
     private PieceColor pieceColor;

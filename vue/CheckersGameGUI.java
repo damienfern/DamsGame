@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Classe de vue générale qui contient le menu + damier
+ */
 public class CheckersGameGUI extends JFrame implements Observer {
 
     private CheckersGameGUIBoard checkersBoard; // Damier

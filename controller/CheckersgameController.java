@@ -39,16 +39,19 @@ public class CheckersgameController {
 
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
+            /**
+             * Vérification que la source de l'évenement est une SquareGUI et qu'un pion a été sélectionné avant
+             */
             if(mouseEvent.getSource() instanceof SquareGUI && checkersGameGUIBoard.getSelectedPieceGUI() != null)
             {
-                SquareGUI caseGUI = (SquareGUI) mouseEvent.getSource();
-                Coord caseCoord = caseGUI.getCoord();
-                System.out.println(caseCoord);
-                if(checkersGameModel.movePiece(caseCoord).equals(ActionType.SIMPLEMOVE))
+                SquareGUI caseGUI = (SquareGUI) mouseEvent.getSource(); // Récupération de la case de destination
+                Coord caseCoord = caseGUI.getCoord(); // Récup des coord de destination
+                System.out.println(caseCoord); // Affichage des coords
+                if(checkersGameModel.movePiece(caseCoord).equals(ActionType.SIMPLEMOVE)) // Si movePiece renvoie l'action SIMPLEMOVE
                 {
-                    PieceGUI piece = (PieceGUI) checkersGameGUIBoard.getSelectedPieceGUI();
+                    PieceGUI piece = (PieceGUI) checkersGameGUIBoard.getSelectedPieceGUI(); // Récup du pion sélectionné
                     piece.setCoord(caseCoord);
-                    caseGUI.add(checkersGameGUIBoard.getSelectedPieceGUI());
+                    caseGUI.add(checkersGameGUIBoard.getSelectedPieceGUI()); // Ajout du pion dans la case
                     checkersGameGUIBoard.setSelectedPieceGUI(null);
                     checkersGameGUIBoard.repaint();
                     System.out.println(checkersGameModel);
@@ -83,12 +86,15 @@ public class CheckersgameController {
     public class PieceListener implements MouseListener {
         @Override
         public void mouseClicked(MouseEvent mouseEvent) {
+            /**
+             * Vérification que la source de l'évenement est un pion
+             */
             if (mouseEvent.getSource() instanceof PieceGUI) {
                 System.out.println("PIONSELECT");
                 PieceGUI pieceGUI = (PieceGUI) mouseEvent.getSource();
-                if(checkersGameModel.isCurrentPlayer(pieceGUI.getCoord()))
+                if(checkersGameModel.isCurrentPlayer(pieceGUI.getCoord())) // Si c'est au tour du joueur
                 {
-                    checkersGameGUIBoard.setSelectedPieceGUI(pieceGUI);
+                    checkersGameGUIBoard.setSelectedPieceGUI(pieceGUI); // mise à jour de la piece sélectionnée
                 }
             }
         }

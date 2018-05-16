@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Classe graphique d'un pion
+ */
 public class Pawn extends AbstractPiece{
 
 
@@ -40,6 +43,11 @@ public class Pawn extends AbstractPiece{
     }
 
 
+    /**
+     * Fonction qui check si le déplacement est OK (REFAIRE GRILL de déplacement si problème)
+     * @param targetCoord
+     * @return
+     */
     @Override
     public boolean isMoveOk(Coord targetCoord) {
         int forward;
@@ -65,6 +73,14 @@ public class Pawn extends AbstractPiece{
         }
     }
 
+    /**
+     * Fonction qui check si le déplacement avec Catch est OK (REFAIRE GRILL de déplacement si problème)
+     * @param targetCoord
+     * @param deltaX
+     * @param deltaY
+     * @param isPieceToCatch
+     * @return
+     */
     @Override
     public boolean isMoveOKWithCatch(Coord targetCoord, int deltaX, int deltaY, boolean isPieceToCatch) {
         return false;

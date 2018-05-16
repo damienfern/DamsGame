@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe de vue du menu
+ */
 public class CheckersGameGUIMenu extends JMenuBar {
 
     private JMenu choix_couleur_menu = new JMenu("Choix couleur");

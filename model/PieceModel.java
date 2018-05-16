@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * Interface modele qui définit les fonctions nécessaires aux classes qui l'implémentent
+ */
 public interface PieceModel {
     public boolean isMoveOk(Coord targetCoord);
 

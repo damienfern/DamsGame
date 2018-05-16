@@ -3,6 +3,9 @@ package model;
 import java.awt.*;
 import java.util.Observable;
 
+/**
+ * Classe de définition des couleurs + taille
+ */
 public class CheckersGameGUIData extends Observable {
     private Color colorBlackPiece;
     private Color colorWhitePiece;

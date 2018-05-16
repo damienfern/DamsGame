@@ -30,6 +30,10 @@ public class CheckersGamePOOMVC {
         f.setVisible(true);
     }
 
+    /**
+     * Fonction qui retourne un tableau de coordonnee des pions blanches
+     * @return
+     */
     private static Coord[] newWhiteCoords() {
         return new Coord[]{
                 new Coord(0,7),
@@ -50,6 +54,10 @@ public class CheckersGamePOOMVC {
         };
     }
 
+    /**
+     * Fonction qui retourne un tableau de coordonnee des pions noirs
+     * @return
+     */
     private static Coord[] newBlackCoords() {
         return new Coord[]{
                 new Coord(1,0),

@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.rmi.NoSuchObjectException;
 import java.util.*;
 
+/**
+ *
+ */
 public class CheckersGameModel {
 
     private List<PieceModel> pieceList; // la liste de pièces noires et blanches
